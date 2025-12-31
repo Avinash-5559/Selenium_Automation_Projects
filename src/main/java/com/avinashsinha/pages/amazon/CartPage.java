@@ -22,8 +22,12 @@ public class CartPage extends CommonToAllPage {
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void buyProduct() {
 
-        if (PropertiesReader.readKey("cartText").matches("Added to cart")) {
-            WaitHelpers.presenceOfElement(driver, addToCartText);
+        String expectedText = PropertiesReader.readKey("expectedText");
+        String actualText = PropertiesReader.readKey("actualText");
+
+        WaitHelpers.presenceOfElement(driver, addToCartText);
+
+        if (expectedText.equals(actualText)) {
             clickElement(clickProceedToBuy);
         } else {
             System.out.println("Amazon Cart Page is Failed");
