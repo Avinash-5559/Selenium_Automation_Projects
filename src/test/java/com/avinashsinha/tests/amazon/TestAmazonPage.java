@@ -29,14 +29,22 @@ public class TestAmazonPage extends CommonToAllTest {
         HomePage homePage = new HomePage(getDriver());
         homePage.amazonHomePage();
 
+        logger.info("Search the Product on Amazon Search Page");
+
         SearchPage searchPage = new SearchPage(getDriver());
         searchPage.searchProduct();
+
+        logger.info("Open the Product on New Amazon Product Page");
 
         ProductPage productPage = new ProductPage(getDriver());
         productPage.clickAddToCartButton();
 
+        logger.info("Add the Product on Amazon Cart Page");
+
         CartPage cartPage = new CartPage(getDriver());
         cartPage.buyProduct();
+
+        logger.info("Proceed to the Amazon CheckOut Page");
 
         CheckoutCumLoginPage checkoutCumLoginPage = new CheckoutCumLoginPage(getDriver());
         checkoutCumLoginPage.checkOutCumLogin();
