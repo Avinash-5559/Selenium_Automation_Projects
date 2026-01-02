@@ -20,7 +20,7 @@ public class TestFlipkartPage extends CommonToAllTest {
     private static final Logger logger = LogManager.getLogger(TestFlipkartPage.class);
 
     @Test
-    @Description("TC#1 Verify that search the Product on Flipkart.com and purchase it")
+    @Description("TC#1 : Verify that search the Product on Flipkart.com and purchase it")
     @Owner("Avinash Sinha")
     public void test_flipkartPage() {
 
