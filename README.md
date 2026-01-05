@@ -44,8 +44,8 @@ The framework follows **Page Object Model (POM)** principles and supports:
 - **Page Object Model (POM)** based framework design
 - Supports **multiple applications** within a single framework :
     - Amazon
-    - Flipkart
     - Applitools Demo App
+    - Flipkart
     - Practice Test Automation App
 - **Reusable base classes** for pages and tests
 - **Centralised WebDriver management**
@@ -90,8 +90,8 @@ The framework follows **Page Object Model (POM)** principles and supports:
 | Application Module         | Description                                      |
 | -------------------------- | ------------------------------------------------ |
 | **amazon**                 | UI automation for Amazon user flows              |
-| **flipkart**               | UI automation for Flipkart user flows            |
 | **applitools**             | Tests for Applitools demo application            |
+| **flipkart**               | UI automation for Flipkart user flows            |
 | **practiceTestAutomation** | Login and dashboard automation for practice site |
 
 ---
@@ -99,8 +99,8 @@ The framework follows **Page Object Model (POM)** principles and supports:
 ## 🌐 Applications Automated  
 
 - **Amazon**
-- **Flipkart**
 - **Applitools Demo App**
+- **Flipkart**
 - **Practice Test Automation App**
 
 Each application is automated as an **independent module**, ensuring clear separation and maintainability:
@@ -212,8 +212,8 @@ mvn clean test -DsuiteXmlFile=testNG-xmls/testng_AmazonPage.xml
 | TestNG File                             | Purpose                                    |
 | --------------------------------------- | ------------------------------------------ |
 | `testng_AmazonPage.xml`                 | Amazon application UI tests                |
-| `testng_FlipkartPage.xml`               | Flipkart application UI tests              |
 | `testng_AppliToolsPage.xml`             | Applitools demo application tests          |
+| `testng_FlipkartPage.xml`               | Flipkart application UI tests              |
 | `testng_PracticeTestAutomationPage.xml` | Practice Test Automation application tests |
 
 ---
@@ -241,6 +241,5 @@ Example Allure dashboard view:
 
 🧠 This repository is designed for **advanced Selenium UI automation learning and practice**, focusing on **real-world framework design**, **scalability**, **reusability**, and **maintainability**.
 Future **Selenium + Java automation projects** will be continuously added to this repository.
-
 
 ---
