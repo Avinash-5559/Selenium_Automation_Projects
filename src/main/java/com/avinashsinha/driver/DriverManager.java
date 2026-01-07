@@ -33,14 +33,14 @@ public class DriverManager {
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--inprivate");
-                //edgeOptions.addArguments("--headless");
+                //edgeOptions.addArguments("--headless=new");
                 driverRef = new EdgeDriver(edgeOptions);
                 break;
 
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--incognito");
-                //chromeOptions.addArguments("--headless");
+                //chromeOptions.addArguments("--headless=new");
                 driverRef = new ChromeDriver(chromeOptions);
                 break;
 

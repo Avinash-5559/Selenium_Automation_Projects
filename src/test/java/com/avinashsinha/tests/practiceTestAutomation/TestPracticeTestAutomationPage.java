@@ -3,11 +3,17 @@ package com.avinashsinha.tests.practiceTestAutomation;
 import com.avinashsinha.base.CommonToAllTest;
 import com.avinashsinha.listeners.RetryAnalyzer;
 import com.avinashsinha.listeners.ScreenshotListeners;
+import com.avinashsinha.pages.practiceTestAutomation.DashboardPage;
+import com.avinashsinha.pages.practiceTestAutomation.LoginPage;
+import com.avinashsinha.utils.PropertiesReader;
 import io.qameta.allure.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import static com.avinashsinha.driver.DriverManager.getDriver;
 
 @Listeners(ScreenshotListeners.class)
 @Test(retryAnalyzer = RetryAnalyzer.class)
@@ -24,6 +30,14 @@ public class TestPracticeTestAutomationPage extends CommonToAllTest {
 
         logger.info("Start the Valid Login Test");
 
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.openPracticeTestAutomation(PropertiesReader.readKey("VALID_USERNAME"), PropertiesReader.readKey("VALID_PASSWORD"));
+
+        logger.info("Dashboard Page is Opened");
+
+        DashboardPage dashboardPage = new DashboardPage(getDriver());
+        dashboardPage.openDashboardPage();
+
         logger.info("Valid Login Test Successful Completed");
 
     }
@@ -36,6 +50,9 @@ public class TestPracticeTestAutomationPage extends CommonToAllTest {
     public void testInvalidUsername() {
 
         logger.info("Start the Invalid Username Test");
+
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.showInvalidUsernameMessage(PropertiesReader.readKey("INVALID_USERNAME"),PropertiesReader.readKey("VALID_PASSWORD"));
 
         logger.info("Invalid Username Test Successful Completed");
 
@@ -50,6 +67,9 @@ public class TestPracticeTestAutomationPage extends CommonToAllTest {
 
         logger.info("Start the Invalid Password Test");
 
+        LoginPage loginPage=new LoginPage(getDriver());
+        loginPage.showInvalidPasswordMessage(PropertiesReader.readKey("VALID_USERNAME"),PropertiesReader.readKey("INVALID_PASSWORD"));
+
         logger.info("Invalid Password Test Successful Completed");
 
     }
@@ -58,10 +78,18 @@ public class TestPracticeTestAutomationPage extends CommonToAllTest {
     @Description("TC#4 : Verify that Logout Functionality")
     @Owner("Avinash Sinha")
     @Severity(SeverityLevel.CRITICAL)
-    @Story("Invalid Login")
+    @Story("Logout")
     public void testLogout() {
 
         logger.info("Start the Logout Test");
+
+        LoginPage loginPage=new LoginPage(getDriver());
+        loginPage.goToTheLogoutButtonPage(PropertiesReader.readKey("VALID_USERNAME"), PropertiesReader.readKey("VALID_PASSWORD"));
+
+        logger.info("Trying to Clicking the Logout Button on Dashboard Page");
+
+        DashboardPage dashboardPage=new DashboardPage(getDriver());
+        dashboardPage.clickLogoutButton();
 
         logger.info("Logout Test Successful Completed");
 
@@ -71,12 +99,19 @@ public class TestPracticeTestAutomationPage extends CommonToAllTest {
     @Description("TC#5 : Verify that capture the screenshot during Intentional Failure")
     @Owner("Avinash Sinha")
     @Severity(SeverityLevel.MINOR)
-    @Story("Invalid Login")
+    @Story("Screenshot Test")
     public void testIntentionalFailureForScreenshot() {
 
         logger.info("Start the Intentional Failure Test for Screenshot Verification");
 
-        logger.info("Intentional Failure for Screenshot Verification Test Successful Completed");
+        LoginPage loginPage=new LoginPage(getDriver());
+        loginPage.openPracticeTestAutomation(PropertiesReader.readKey("VALID_USERNAME"), PropertiesReader.readKey("VALID_PASSWORD"));
+
+        logger.info("Take the Screenshot");
+
+        Assert.assertEquals(getDriver().getTitle(),PropertiesReader.readKey("INTENTIONAL_SCREENSHOT"));
+
+        //logger.info("Intentional Failure for Screenshot Verification Test Successful Completed");
 
     }
 

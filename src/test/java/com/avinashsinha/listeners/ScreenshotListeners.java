@@ -27,7 +27,7 @@ public class ScreenshotListeners implements ITestListener {
 
         Calendar calendar=Calendar.getInstance();
 
-        SimpleDateFormat formatter=new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+        SimpleDateFormat formatter=new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
 
         if (driver != null) {
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
