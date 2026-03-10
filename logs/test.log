@@ -780,3 +780,141 @@
 2026-01-02 21:07:59 INFO  TestPracticeTestAutomationPage - Take the Screenshot
 2026-01-02 21:08:01 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
 2026-01-02 21:08:04 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-07 03:33:58 INFO  TestPracticeTestAutomationPage - Start the Invalid Username Test
+2026-03-07 03:33:58 INFO  TestPracticeTestAutomationPage - Start the Valid Login Test
+2026-03-07 03:34:01 INFO  TestPracticeTestAutomationPage - Invalid Username Test Successful Completed
+2026-03-07 03:34:03 INFO  TestPracticeTestAutomationPage - Dashboard Page is Opened
+2026-03-07 03:34:03 INFO  TestPracticeTestAutomationPage - Start the Invalid Password Test
+2026-03-07 03:34:05 INFO  TestPracticeTestAutomationPage - Valid Login Test Successful Completed
+2026-03-07 03:34:05 INFO  TestPracticeTestAutomationPage - Invalid Password Test Successful Completed
+2026-03-07 03:34:06 INFO  TestPracticeTestAutomationPage - Start the Logout Test
+2026-03-07 03:34:08 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-07 03:34:11 INFO  TestPracticeTestAutomationPage - Trying to Clicking the Logout Button on Dashboard Page
+2026-03-07 03:34:12 INFO  TestPracticeTestAutomationPage - Logout Test Successful Completed
+2026-03-07 03:34:12 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-07 03:34:14 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-07 03:34:18 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-07 03:34:19 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-07 03:34:23 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-07 03:34:24 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-07 03:34:27 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 22:37:23 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:37:30 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:37:37 INFO  TestAmazonPage - Open the Product on New Amazon Product Page
+2026-03-10 22:37:42 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:37:48 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:37:53 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:37:59 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:38:03 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:38:09 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:38:16 INFO  TestAmazonPage - Open the Product on New Amazon Product Page
+2026-03-10 22:38:46 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:38:53 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:38:59 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:39:05 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:39:09 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:39:17 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:39:22 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:39:30 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:39:38 INFO  TestAmazonPage - Open the Product on New Amazon Product Page
+2026-03-10 22:45:36 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:45:41 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:45:46 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:45:52 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:45:57 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:46:06 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:46:12 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:46:22 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:46:31 INFO  TestAmazonPage - Open the Product on New Amazon Product Page
+2026-03-10 22:46:35 INFO  TestAmazonPage - Add the Product on Amazon Cart Page
+2026-03-10 22:46:37 INFO  TestAmazonPage - Proceed to the Amazon CheckOut Page
+2026-03-10 22:46:37 INFO  TestAmazonPage - Finished the TestCase of Amazon Page
+2026-03-10 22:47:54 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:47:59 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:48:04 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:48:10 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:48:14 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:48:20 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:48:25 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:48:31 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:49:14 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:49:20 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:49:24 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:49:31 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:49:35 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:49:41 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:49:45 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-10 22:49:51 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-10 22:50:55 INFO  TestPracticeTestAutomationPage - Start the Invalid Username Test
+2026-03-10 22:50:55 INFO  TestPracticeTestAutomationPage - Start the Valid Login Test
+2026-03-10 22:50:57 INFO  TestPracticeTestAutomationPage - Invalid Username Test Successful Completed
+2026-03-10 22:50:58 INFO  TestPracticeTestAutomationPage - Dashboard Page is Opened
+2026-03-10 22:50:59 INFO  TestPracticeTestAutomationPage - Start the Invalid Password Test
+2026-03-10 22:50:59 INFO  TestPracticeTestAutomationPage - Valid Login Test Successful Completed
+2026-03-10 22:51:01 INFO  TestPracticeTestAutomationPage - Start the Logout Test
+2026-03-10 22:51:02 INFO  TestPracticeTestAutomationPage - Invalid Password Test Successful Completed
+2026-03-10 22:51:04 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 22:51:05 INFO  TestPracticeTestAutomationPage - Trying to Clicking the Logout Button on Dashboard Page
+2026-03-10 22:51:06 INFO  TestPracticeTestAutomationPage - Logout Test Successful Completed
+2026-03-10 22:51:08 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 22:51:09 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 22:51:12 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 22:51:14 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 22:51:17 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 22:51:19 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 22:51:22 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 22:52:34 INFO  TestAppliToolsPage - Starting the TestCase of AppliTools Page
+2026-03-10 22:52:41 INFO  TestAppliToolsPage - Finishing the TestCase of AppliTools Page
+2026-03-10 23:57:17 INFO  TestPracticeTestAutomationPage - Start the Invalid Username Test
+2026-03-10 23:57:17 INFO  TestPracticeTestAutomationPage - Start the Valid Login Test
+2026-03-10 23:57:21 INFO  TestPracticeTestAutomationPage - Invalid Username Test Successful Completed
+2026-03-10 23:57:22 INFO  TestPracticeTestAutomationPage - Dashboard Page is Opened
+2026-03-10 23:57:22 INFO  TestPracticeTestAutomationPage - Start the Invalid Password Test
+2026-03-10 23:57:23 INFO  TestPracticeTestAutomationPage - Valid Login Test Successful Completed
+2026-03-10 23:57:25 INFO  TestPracticeTestAutomationPage - Start the Logout Test
+2026-03-10 23:57:26 INFO  TestPracticeTestAutomationPage - Invalid Password Test Successful Completed
+2026-03-10 23:57:29 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 23:57:29 INFO  TestPracticeTestAutomationPage - Trying to Clicking the Logout Button on Dashboard Page
+2026-03-10 23:57:30 INFO  TestPracticeTestAutomationPage - Logout Test Successful Completed
+2026-03-10 23:57:34 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 23:57:39 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 23:57:42 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 23:57:43 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 23:57:47 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-10 23:57:48 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-10 23:57:52 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-11 00:09:20 INFO  TestPracticeTestAutomationPage - Start the Valid Login Test
+2026-03-11 00:09:24 INFO  TestPracticeTestAutomationPage - Dashboard Page is Opened
+2026-03-11 00:09:24 INFO  TestPracticeTestAutomationPage - Valid Login Test Successful Completed
+2026-03-11 00:09:26 INFO  TestPracticeTestAutomationPage - Start the Invalid Username Test
+2026-03-11 00:09:29 INFO  TestPracticeTestAutomationPage - Invalid Username Test Successful Completed
+2026-03-11 00:09:30 INFO  TestPracticeTestAutomationPage - Start the Invalid Password Test
+2026-03-11 00:09:33 INFO  TestPracticeTestAutomationPage - Invalid Password Test Successful Completed
+2026-03-11 00:09:34 INFO  TestPracticeTestAutomationPage - Start the Logout Test
+2026-03-11 00:09:37 INFO  TestPracticeTestAutomationPage - Trying to Clicking the Logout Button on Dashboard Page
+2026-03-11 00:09:38 INFO  TestPracticeTestAutomationPage - Logout Test Successful Completed
+2026-03-11 00:09:39 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-11 00:09:43 INFO  TestPracticeTestAutomationPage - Take the Screenshot
+2026-03-11 00:32:16 INFO  TestAmazonPage - Starting the TestCase of Amazon Page
+2026-03-11 00:32:22 INFO  TestAmazonPage - Search the Product on Amazon Search Page
+2026-03-11 00:32:29 INFO  TestAmazonPage - Open the Product on New Amazon Product Page
+2026-03-11 00:32:34 INFO  TestAmazonPage - Add the Product on Amazon Cart Page
+2026-03-11 00:32:36 INFO  TestAmazonPage - Proceed to the Amazon CheckOut Page
+2026-03-11 00:32:36 INFO  TestAmazonPage - Finished the TestCase of Amazon Page
+2026-03-11 00:32:38 INFO  TestAppliToolsPage - Starting the TestCase of AppliTools Page
+2026-03-11 00:32:45 INFO  TestAppliToolsPage - Finishing the TestCase of AppliTools Page
+2026-03-11 00:32:47 INFO  TestFlipkartPage - Starting the TestCase of Flipkart Page
+2026-03-11 00:32:51 INFO  TestFlipkartPage - Search the Product on Flipkart Search Page
+2026-03-11 00:32:56 INFO  TestFlipkartPage - Open the Product on New Flipkart Product Page
+2026-03-11 00:32:58 INFO  TestPracticeTestAutomationPage - Start the Valid Login Test
+2026-03-11 00:33:02 INFO  TestPracticeTestAutomationPage - Dashboard Page is Opened
+2026-03-11 00:33:03 INFO  TestPracticeTestAutomationPage - Valid Login Test Successful Completed
+2026-03-11 00:33:04 INFO  TestPracticeTestAutomationPage - Start the Invalid Username Test
+2026-03-11 00:33:07 INFO  TestPracticeTestAutomationPage - Invalid Username Test Successful Completed
+2026-03-11 00:33:08 INFO  TestPracticeTestAutomationPage - Start the Invalid Password Test
+2026-03-11 00:33:11 INFO  TestPracticeTestAutomationPage - Invalid Password Test Successful Completed
+2026-03-11 00:33:12 INFO  TestPracticeTestAutomationPage - Start the Logout Test
+2026-03-11 00:33:16 INFO  TestPracticeTestAutomationPage - Trying to Clicking the Logout Button on Dashboard Page
+2026-03-11 00:33:16 INFO  TestPracticeTestAutomationPage - Logout Test Successful Completed
+2026-03-11 00:33:17 INFO  TestPracticeTestAutomationPage - Start the Intentional Failure Test for Screenshot Verification
+2026-03-11 00:33:21 INFO  TestPracticeTestAutomationPage - Take the Screenshot
