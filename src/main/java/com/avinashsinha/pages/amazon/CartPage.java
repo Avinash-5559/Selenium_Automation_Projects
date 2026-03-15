@@ -16,8 +16,8 @@ public class CartPage extends CommonToAllPage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private By addToCartText = By.xpath("//h1[normalize-space()='Added to cart']");
-    private By clickProceedToBuy = By.xpath("//input[@name='proceedToRetailCheckout']");
+    private static final By ADD_TO_CART_TEXT = By.xpath("//h1[normalize-space()='Added to cart']");
+    private static final By CLICK_PROCEED_TO_BUY = By.xpath("//input[@name='proceedToRetailCheckout']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void buyProduct() {
@@ -25,10 +25,10 @@ public class CartPage extends CommonToAllPage {
         String expectedText = PropertiesReader.readKey("expectedAmazonText");
         String actualText = PropertiesReader.readKey("actualAmazonText");
 
-        WaitHelpers.presenceOfElement(driver, addToCartText);
+        WaitHelpers.presenceOfElement(driver, ADD_TO_CART_TEXT);
 
         if (expectedText.equals(actualText)) {
-            clickElement(clickProceedToBuy);
+            clickElement(CLICK_PROCEED_TO_BUY);
         } else {
             System.out.println("\nAmazon Cart Page is Failed.\n");
             WaitHelpers.visibilityOfElement(driver.findElement(By.xpath("(//h1[normalize-space()='Sign in or create account']")));

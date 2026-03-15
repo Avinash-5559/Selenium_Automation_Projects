@@ -18,7 +18,7 @@ public class SearchPage extends CommonToAllPage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private By findProduct = By.xpath(PropertiesReader.readKey("actualAmazonXpath"));
+    private static final By FIND_PRODUCT = By.xpath(PropertiesReader.readKey("actualAmazonXpath"));
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void searchProduct() {
@@ -30,14 +30,14 @@ public class SearchPage extends CommonToAllPage {
 
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
-            WebElement element = driver.findElement(findProduct);
+            WebElement element = driver.findElement(FIND_PRODUCT);
             js.executeScript(
                     "arguments[0].scrollIntoView({behavior:'smooth',block:'center'});",
                     element);
 
             WaitHelpers.waitJVM(3000);
 
-            clickElement(findProduct);
+            clickElement(FIND_PRODUCT);
 
             WaitHelpers.waitJVM(3000);
 

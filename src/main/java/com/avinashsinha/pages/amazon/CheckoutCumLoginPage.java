@@ -16,8 +16,8 @@ public class CheckoutCumLoginPage extends CommonToAllPage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private By continueButton = By.xpath("//span[@id='continue-announce']");
-    private By searchText = By.xpath("//label[@for='twotabsearchtextbox']");
+    private static final By CONTINUE_BUTTON = By.xpath("//span[@id='continue-announce']");
+    private static final By SEARCH_TEXT = By.xpath("//label[@for='twotabsearchtextbox']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void checkOutCumLogin() {
@@ -25,13 +25,13 @@ public class CheckoutCumLoginPage extends CommonToAllPage {
         String expectedButtonText = PropertiesReader.readKey("expectedAmazonButtonText");
         String actualButtonText = PropertiesReader.readKey("actualAmazonButtonText");
 
-        WaitHelpers.presenceOfElement(driver, continueButton);
+        WaitHelpers.presenceOfElement(driver, CONTINUE_BUTTON);
 
         if (expectedButtonText.equals(actualButtonText)) {
             System.out.println("\nWhole WebPages are Passed\n");
         } else {
             System.out.println("\nAmazon Checkout Page is Failed\n");
-            WaitHelpers.visibilityOfElement(searchText);
+            WaitHelpers.visibilityOfElement(SEARCH_TEXT);
         }
 
     }
