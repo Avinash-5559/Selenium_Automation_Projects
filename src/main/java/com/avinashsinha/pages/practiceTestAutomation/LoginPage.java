@@ -17,11 +17,11 @@ public class LoginPage extends CommonToAllPage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private By username = By.xpath("//input[@id='username']");
-    private By password = By.xpath("//input[@id='password']");
-    private By submit = By.xpath("//button[@id='submit']");
-    private By errorUsernameMessage = By.xpath("//div[contains(text(),'Your username is invalid!')]");
-    private By errorPasswordMessage = By.xpath("//div[contains(text(),'Your password is invalid!')]");
+    private static final By USERNAME = By.xpath("//input[@id='username']");
+    private static final By PASSWORD = By.xpath("//input[@id='password']");
+    private static final By SUBMIT = By.xpath("//button[@id='submit']");
+    private static final By ERROR_USERNAME_MESSAGE = By.xpath("//div[contains(text(),'Your username is invalid!')]");
+    private static final By ERROR_PASSWORD_MESSAGE = By.xpath("//div[contains(text(),'Your password is invalid!')]");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void openPracticeTestAutomation(String usr, String pwd) {
@@ -32,14 +32,14 @@ public class LoginPage extends CommonToAllPage {
         actions.keyDown(Keys.PAGE_DOWN)
                 .build().perform();
 
-        WaitHelpers.presenceOfElement(driver, username);
-        enterInput(username, usr);
+        WaitHelpers.presenceOfElement(driver, USERNAME);
+        enterInput(USERNAME, usr);
 
-        WaitHelpers.presenceOfElement(driver, password);
-        enterInput(password, pwd);
+        WaitHelpers.presenceOfElement(driver, PASSWORD);
+        enterInput(PASSWORD, pwd);
 
-        WaitHelpers.presenceOfElement(driver, submit);
-        clickElement(submit);
+        WaitHelpers.presenceOfElement(driver, SUBMIT);
+        clickElement(SUBMIT);
 
     }
 
@@ -51,18 +51,18 @@ public class LoginPage extends CommonToAllPage {
         actions.keyDown(Keys.PAGE_DOWN)
                 .build().perform();
 
-        WaitHelpers.presenceOfElement(driver, username);
-        enterInput(username, usr);
+        WaitHelpers.presenceOfElement(driver, USERNAME);
+        enterInput(USERNAME, usr);
 
-        WaitHelpers.presenceOfElement(driver, password);
-        enterInput(password, pwd);
+        WaitHelpers.presenceOfElement(driver, PASSWORD);
+        enterInput(PASSWORD, pwd);
 
-        WaitHelpers.presenceOfElement(driver, submit);
-        clickElement(submit);
+        WaitHelpers.presenceOfElement(driver, SUBMIT);
+        clickElement(SUBMIT);
 
-        WaitHelpers.presenceOfElement(driver, errorUsernameMessage);
+        WaitHelpers.presenceOfElement(driver, ERROR_USERNAME_MESSAGE);
 
-        String errorUsernameMessageText = driver.findElement(errorUsernameMessage).getText();
+        String errorUsernameMessageText = driver.findElement(ERROR_USERNAME_MESSAGE).getText();
         System.out.println("\nError Message Shown when USER enter Invalid Username : " + errorUsernameMessageText + "\n");
 
     }
@@ -75,18 +75,18 @@ public class LoginPage extends CommonToAllPage {
         actions.keyDown(Keys.PAGE_DOWN)
                 .build().perform();
 
-        WaitHelpers.presenceOfElement(driver, username);
-        enterInput(username, usr);
+        WaitHelpers.presenceOfElement(driver, USERNAME);
+        enterInput(USERNAME, usr);
 
-        WaitHelpers.presenceOfElement(driver, password);
-        enterInput(password, pwd);
+        WaitHelpers.presenceOfElement(driver, PASSWORD);
+        enterInput(PASSWORD, pwd);
 
-        WaitHelpers.presenceOfElement(driver, submit);
-        clickElement(submit);
+        WaitHelpers.presenceOfElement(driver, SUBMIT);
+        clickElement(SUBMIT);
 
-        WaitHelpers.presenceOfElement(driver, errorPasswordMessage);
+        WaitHelpers.presenceOfElement(driver, ERROR_PASSWORD_MESSAGE);
 
-        String errorPasswordMessageText = driver.findElement(errorPasswordMessage).getText();
+        String errorPasswordMessageText = driver.findElement(ERROR_PASSWORD_MESSAGE).getText();
         System.out.println("\nError Message Shown when USER enter Invalid Password : " + errorPasswordMessageText + "\n");
 
     }
@@ -99,14 +99,14 @@ public class LoginPage extends CommonToAllPage {
         actions.keyDown(Keys.PAGE_DOWN)
                 .build().perform();
 
-        WaitHelpers.presenceOfElement(driver,username);
-        enterInput(username, usr);
+        WaitHelpers.presenceOfElement(driver, USERNAME);
+        enterInput(USERNAME, usr);
 
-        WaitHelpers.presenceOfElement(driver, password);
-        enterInput(password, pwd);
+        WaitHelpers.presenceOfElement(driver, PASSWORD);
+        enterInput(PASSWORD, pwd);
 
-        WaitHelpers.presenceOfElement(driver, submit);
-        clickElement(submit);
+        WaitHelpers.presenceOfElement(driver, SUBMIT);
+        clickElement(SUBMIT);
 
     }
 

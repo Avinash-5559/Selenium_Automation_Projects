@@ -15,39 +15,37 @@ public class DashboardPage extends CommonToAllPage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private By loggedMessage = By.xpath("//h1[contains(text(),'Logged In Successfully')]");
-    private By congratulationMessage = By.xpath("//p//strong[contains(text(),'Congratulations student. You successfully logged in!')]");
-    private By logout = By.xpath("//a[text()='Log out']");
+    private static final By LOGGED_MESSAGE = By.xpath("//h1[contains(text(),'Logged In Successfully')]");
+    private static final By CONGRATULATION_MESSAGE = By.xpath("//p//strong[contains(text(),'Congratulations student. You successfully logged in!')]");
+    private static final By LOGOUT = By.xpath("//a[text()='Log out']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void openDashboardPage() {
 
         System.out.println("\nDashboard Page URL     : " + driver.getCurrentUrl());
 
-        WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, driver.findElement(loggedMessage));
+        WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, driver.findElement(LOGGED_MESSAGE));
 
-        String loggedMessageText = driver.findElement(loggedMessage).getText();
+        String loggedMessageText = driver.findElement(LOGGED_MESSAGE).getText();
         System.out.println("\nLogged Message         : " + loggedMessageText);
 
-        WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, driver.findElement(congratulationMessage));
+        WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, driver.findElement(CONGRATULATION_MESSAGE));
 
-        String congratulationMessageText = driver.findElement(congratulationMessage).getText();
+        String congratulationMessageText = driver.findElement(CONGRATULATION_MESSAGE).getText();
         System.out.println("\nCongratulation Message : " + congratulationMessageText + "\n");
 
-        WaitHelpers.presenceOfElement(logout);
+        WaitHelpers.presenceOfElement(LOGOUT);
 
-        clickElement(logout);
+        clickElement(LOGOUT);
 
     }
 
     public void clickLogoutButton(){
 
-        WaitHelpers.presenceOfElement(logout);
+        WaitHelpers.presenceOfElement(LOGOUT);
 
-        clickElement(logout);
+        clickElement(LOGOUT);
 
     }
-
-
 
 }
