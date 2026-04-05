@@ -9,7 +9,7 @@
         <listener class-name="com.avinashsinha.listeners.ScreenshotListeners"></listener>
     </listeners>
 
-    <test verbose="2" preserve-order="true" name="C:/Users/HP/Documents/Selenium_Automation_Projects">
+    <test verbose="2" preserve-order="true" name="Practice Test Automation Page Test Suite">
         <classes>
             <class name="com.avinashsinha.tests.practiceTestAutomation.TestPracticeTestAutomationPage">
             </class>
