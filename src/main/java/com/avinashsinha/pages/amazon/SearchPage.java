@@ -1,6 +1,6 @@
 package com.avinashsinha.pages.amazon;
 
-import com.avinashsinha.base.CommonToAllPage;
+import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 //This is Page Class
-public class SearchPage extends CommonToAllPage {
+public class SearchPage extends BasePage {
 
     WebDriver driver;
 

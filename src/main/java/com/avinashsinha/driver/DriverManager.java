@@ -22,7 +22,7 @@ public class DriverManager {
     }
 
     //When we want to Start the Browser
-    public static void openBrowser() {
+    public static void initDriver() {
 
         String browser = PropertiesReader.readKey("browser");
         browser = browser.toLowerCase();
@@ -63,7 +63,7 @@ public class DriverManager {
     }
 
     //When we want to Close the Browser
-    public static void closeBrowser() {
+    public static void quitDriver() {
 
         if (getDriver() != null) {
             getDriver().quit();

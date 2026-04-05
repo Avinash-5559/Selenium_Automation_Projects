@@ -1,12 +1,12 @@
 package com.avinashsinha.pages.practiceTestAutomation;
 
-import com.avinashsinha.base.CommonToAllPage;
+import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.WaitHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 //This is Page Class
-public class DashboardPage extends CommonToAllPage {
+public class DashboardPage extends BasePage {
 
     WebDriver driver;
 

@@ -1,6 +1,6 @@
 package com.avinashsinha.pages.flipkart;
 
-import com.avinashsinha.base.CommonToAllPage;
+import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.WaitHelpers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 //This is Page Class
-public class ProductPage extends CommonToAllPage {
+public class ProductPage extends BasePage {
 
     WebDriver driver;
 
@@ -20,14 +20,15 @@ public class ProductPage extends CommonToAllPage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private By addToCartButton = By.xpath("//button[text()='Add to cart']");
+    private static final By ADD_TO_CART_BUTTON = By.xpath("//div[text()='Add to cart']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void clickAddToCartButton() {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        WebElement addToCartButtonElement = driver.findElement(addToCartButton);
+        WebElement addToCartButtonElement = WaitHelpers.checkVisibility(ADD_TO_CART_BUTTON);
+
         js.executeScript(
                 "window.scrollBy(0, 1000);",
                 addToCartButtonElement);

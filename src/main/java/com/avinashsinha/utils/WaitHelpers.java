@@ -57,6 +57,14 @@ public class WaitHelpers {
         return error_message;
     }
 
+    public static void waitForEitherElement(By locator1, By locator2) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.or(
+                ExpectedConditions.visibilityOfElementLocated(locator1),
+                ExpectedConditions.visibilityOfElementLocated(locator2)
+        ));
+    }
+
     public static void waitForElementToBeClickable(WebDriver driver, By locator) {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(locator));
@@ -78,12 +86,16 @@ public class WaitHelpers {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(elementLocation));
     }
 
-    public WebElement getElement(By key) {
+    public static WebElement checkVisibility(By addToCartButton) {
+        return new WebDriverWait(getDriver(), Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(addToCartButton));
+    }
+
+    public static WebElement getElement(By key) {
         return getDriver().findElement(key);
     }
 
     public static void urlContains(WebDriver driver, String locator) {
-        WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.urlContains(locator));
     }
 

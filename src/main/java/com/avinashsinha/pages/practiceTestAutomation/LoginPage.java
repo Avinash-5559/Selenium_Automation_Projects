@@ -1,6 +1,6 @@
 package com.avinashsinha.pages.practiceTestAutomation;
 
-import com.avinashsinha.base.CommonToAllPage;
+import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.WaitHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 //This is Page Class
-public class LoginPage extends CommonToAllPage {
+public class LoginPage extends BasePage {
 
     WebDriver driver;
 
@@ -26,7 +26,7 @@ public class LoginPage extends CommonToAllPage {
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void openPracticeTestAutomation(String usr, String pwd) {
 
-        openPracticeTestAutomation();
+        openPracticeTestAutomationUrl();
 
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.PAGE_DOWN)
@@ -45,7 +45,7 @@ public class LoginPage extends CommonToAllPage {
 
     public void showInvalidUsernameMessage(String usr, String pwd) {
 
-        openPracticeTestAutomation();
+        openPracticeTestAutomationUrl();
 
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.PAGE_DOWN)
@@ -69,7 +69,7 @@ public class LoginPage extends CommonToAllPage {
 
     public void showInvalidPasswordMessage(String usr, String pwd) {
 
-        openPracticeTestAutomation();
+        openPracticeTestAutomationUrl();
 
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.PAGE_DOWN)
@@ -93,7 +93,7 @@ public class LoginPage extends CommonToAllPage {
 
     public void goToTheLogoutButtonPage(String usr, String pwd) {
 
-        openPracticeTestAutomation();
+        openPracticeTestAutomationUrl();
 
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.PAGE_DOWN)

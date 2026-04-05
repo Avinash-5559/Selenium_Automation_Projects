@@ -1,6 +1,6 @@
 package com.avinashsinha.pages.amazon;
 
-import com.avinashsinha.base.CommonToAllPage;
+import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.WaitHelpers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 //This is Page Class
-public class ProductPage extends CommonToAllPage {
+public class ProductPage extends BasePage {
 
     WebDriver driver;
 
@@ -22,7 +22,7 @@ public class ProductPage extends CommonToAllPage {
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
     private static final By ELEMENT_TO_BE_PRESENT = By.xpath("//input[@id='buy-now-button']");
     private static final By ADD_TO_CART_BUTTON = By.xpath("//input[@id='add-to-cart-button']");
-    private static final By CLICK_QUANTITY = By.xpath("//span[@id='a-autoid-0-announce']");
+    private static final By CLICK_QUANTITY = By.xpath("//span[contains(@class,'a-button-text') and @data-action='a-dropdown-button']");
     private static final By SELECT_QUANTITY = By.xpath("//a[@id='quantity_10']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods

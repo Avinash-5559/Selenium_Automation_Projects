@@ -1,13 +1,13 @@
 package com.avinashsinha.pages.amazon;
 
-import com.avinashsinha.base.CommonToAllPage;
+import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 //This is Page Class
-public class HomePage extends CommonToAllPage {
+public class HomePage extends BasePage {
 
     WebDriver driver;
 

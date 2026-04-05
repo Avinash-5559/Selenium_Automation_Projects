@@ -10,9 +10,9 @@ import static com.avinashsinha.driver.DriverManager.getDriver;
 // If you want to call something before every Page Object Class call, Put your Code here
 // Open File, Open Data, Base Connection you can write code here
 
-public class CommonToAllPage {
+public class BasePage {
 
-    public CommonToAllPage() {
+    public BasePage() {
     }
 
     public void openAmazonUrl() {
@@ -27,8 +27,12 @@ public class CommonToAllPage {
         getDriver().get(PropertiesReader.readKey("actualFlipkartUrl"));
     }
 
-    public void openPracticeTestAutomation() {
+    public void openPracticeTestAutomationUrl() {
         getDriver().get(PropertiesReader.readKey("pta_url"));
+    }
+
+    public void openSauceDemoUrl(){
+        getDriver().get(PropertiesReader.readKey("actualSauceDemoUrl"));
     }
 
     public void clickElement(By by) {

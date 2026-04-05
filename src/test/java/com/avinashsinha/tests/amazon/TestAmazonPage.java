@@ -1,6 +1,6 @@
 package com.avinashsinha.tests.amazon;
 
-import com.avinashsinha.base.CommonToAllTest;
+import com.avinashsinha.base.BaseTest;
 import com.avinashsinha.listeners.RetryAnalyzer;
 import com.avinashsinha.listeners.ScreenshotListeners;
 import com.avinashsinha.pages.amazon.*;
@@ -15,41 +15,41 @@ import static com.avinashsinha.driver.DriverManager.getDriver;
 
 @Listeners(ScreenshotListeners.class)
 @Test(retryAnalyzer = RetryAnalyzer.class)
-public class TestAmazonPage extends CommonToAllTest {
+public class TestAmazonPage extends BaseTest {
 
-    private static final Logger logger = LogManager.getLogger(TestAmazonPage.class);
+    private static final Logger LOGGER = LogManager.getLogger(TestAmazonPage.class);
 
     @Test
     @Description("TC#1 : Verify that search the Product on Amazon.in and purchase it")
     @Owner("Avinash Sinha")
     public void test_amazonPage() {
 
-        logger.info("Starting the TestCase of Amazon Page");
+        LOGGER.info("Starting the TestCase of Amazon Page");
 
         HomePage homePage = new HomePage(getDriver());
         homePage.amazonHomePage();
 
-        logger.info("Search the Product on Amazon Search Page");
+        LOGGER.info("Search the Product on Amazon Search Page");
 
         SearchPage searchPage = new SearchPage(getDriver());
         searchPage.searchProduct();
 
-        logger.info("Open the Product on New Amazon Product Page");
+        LOGGER.info("Open the Product on New Amazon Product Page");
 
         ProductPage productPage = new ProductPage(getDriver());
         productPage.clickAddToCartButton();
 
-        logger.info("Add the Product on Amazon Cart Page");
+        LOGGER.info("Add the Product on Amazon Cart Page");
 
         CartPage cartPage = new CartPage(getDriver());
         cartPage.buyProduct();
 
-        logger.info("Proceed to the Amazon CheckOut Page");
+        LOGGER.info("Proceed to the Amazon CheckOut Page");
 
         CheckoutCumLoginPage checkoutCumLoginPage = new CheckoutCumLoginPage(getDriver());
         checkoutCumLoginPage.checkOutCumLogin();
 
-        logger.info("Finished the TestCase of Amazon Page");
+        LOGGER.info("Finished the TestCase of Amazon Page");
 
     }
 }
