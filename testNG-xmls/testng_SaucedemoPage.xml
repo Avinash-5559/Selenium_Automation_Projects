@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite"
+       parallel="methods"
+       thread-count="2">
+
+    <listeners>
+        <listener class-name="com.avinashsinha.listeners.RetryListeners"></listener>
+        <listener class-name="com.avinashsinha.listeners.ScreenshotListeners"></listener>
+    </listeners>
+
+    <test verbose="2" preserve-order="true" name="All Pages Test Suite">
+        <classes>
+            <class name="com.avinashsinha.tests.saucedemo.TestSauceDemo_LoginPage"/>
+            <class name="com.avinashsinha.tests.saucedemo.TestSauceDemo_ProductPage"/>
+            <class name="com.avinashsinha.tests.saucedemo.TestSauceDemo_CartPage"/>
+            <class name="com.avinashsinha.tests.saucedemo.TestSauceDemo_CheckoutInfoPage"/>
+        </classes>
+    </test>
+</suite>
