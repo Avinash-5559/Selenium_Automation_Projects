@@ -1,8 +1,9 @@
 package com.avinashsinha.pages.saucedemo;
 
 import com.avinashsinha.base.BasePage;
-import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,6 +18,8 @@ import java.time.format.DateTimeFormatter;
 //This is Page Class
 public class ConfirmationPage extends BasePage {
 
+    private static final Logger LOGGER = LogManager.getLogger(ConfirmationPage.class);
+
     WebDriver driver;
 
     public ConfirmationPage(WebDriver driver) {
@@ -24,15 +27,16 @@ public class ConfirmationPage extends BasePage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private final static By BACK_HOME_BUTTON = By.id("back-to-products");
+    private static final By COMPLETE_HEADER = By.cssSelector(".complete-header");
+    private static final By BACK_HOME_BUTTON = By.id("back-to-products");
+    private static final By SAUCE_DEMO_FALLBACK = By.id("sauce-demo-id");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public ConfirmationPage placedOrderConfirmed() {
 
-        String expectedCompletePageTitle = PropertiesReader.readKey("expectedCompletePageTitle");
-        String actualCompletePageTitle = PropertiesReader.readKey("actualCompletePageTitle");
+        boolean isOrderConfirmed = WaitHelpers.isElementPresent(driver, COMPLETE_HEADER);
 
-        if (expectedCompletePageTitle.equals(actualCompletePageTitle)) {
+        if (isOrderConfirmed) {
 
             File sourceFolder = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
@@ -55,8 +59,8 @@ public class ConfirmationPage extends BasePage {
 
         } else {
 
-            System.out.println("\nOrder is not Placed and Dispatched\n");
-            WaitHelpers.presenceOfElement(driver, By.id("sauce-demo-id"));
+            LOGGER.error("Order is not Placed and Dispatched.");
+            WaitHelpers.presenceOfElement(driver, SAUCE_DEMO_FALLBACK);
 
         }
 

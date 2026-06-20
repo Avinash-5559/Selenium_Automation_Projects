@@ -1,13 +1,16 @@
 package com.avinashsinha.pages.amazon;
 
 import com.avinashsinha.base.BasePage;
-import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 //This is Page Class
 public class CheckoutCumLoginPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(CheckoutCumLoginPage.class);
 
     WebDriver driver;
 
@@ -20,20 +23,18 @@ public class CheckoutCumLoginPage extends BasePage {
     private static final By SEARCH_TEXT = By.xpath("//label[@for='twotabsearchtextbox']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
-    public void checkOutCumLogin() {
+    public boolean checkOutCumLogin() {
 
-        String expectedButtonText = PropertiesReader.readKey("expectedAmazonButtonText");
-        String actualButtonText = PropertiesReader.readKey("actualAmazonButtonText");
+        boolean isContinueButtonPresent = WaitHelpers.isElementPresent(driver, CONTINUE_BUTTON);
 
-        WaitHelpers.presenceOfElement(driver, CONTINUE_BUTTON);
-
-        if (expectedButtonText.equals(actualButtonText)) {
-            System.out.println("\nWhole WebPages are Passed\n");
+        if (isContinueButtonPresent) {
+            LOGGER.info("Checkout flow proceeded successfully. Whole webpage flow passed.");
         } else {
-            System.out.println("\nAmazon Checkout Page is Failed\n");
-            WaitHelpers.visibilityOfElement(SEARCH_TEXT);
+            LOGGER.info("Amazon Checkout Page Failed: Continue button not found.");
+            WaitHelpers.visibilityOfElement(driver, SEARCH_TEXT);
         }
 
+        return isContinueButtonPresent;
     }
 
 }

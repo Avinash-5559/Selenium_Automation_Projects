@@ -46,7 +46,7 @@ public class TestSauceDemoPage_E2E extends BaseTest {
 
         CartPage cartPage = new CartPage(getDriver());
         cartPage
-                .clickCheckoutButtton();
+                .clickCheckoutButton();
 
         LOGGER.info("Go for Checkout from the Cart Page");
 

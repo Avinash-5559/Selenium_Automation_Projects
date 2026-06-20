@@ -9,6 +9,7 @@ import com.avinashsinha.utils.PropertiesReader;
 import io.qameta.allure.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -20,6 +21,10 @@ import static com.avinashsinha.driver.DriverManager.getDriver;
 public class TestPracticeTestAutomationPage extends BaseTest {
 
     private static final Logger LOGGER = LogManager.getLogger(TestPracticeTestAutomationPage.class);
+
+    // Locators used only for assertion checks in this test class
+    private static final By ERROR_USERNAME_MESSAGE = By.xpath("//div[contains(text(),'Your username is invalid!')]");
+    private static final By ERROR_PASSWORD_MESSAGE = By.xpath("//div[contains(text(),'Your password is invalid!')]");
 
     @Test(priority = 1)
     @Description("TC#1 : Verify that successful login with Valid Credentials")
@@ -36,7 +41,8 @@ public class TestPracticeTestAutomationPage extends BaseTest {
         LOGGER.info("Dashboard Page is Opened");
 
         DashboardPage dashboardPage = new DashboardPage(getDriver());
-        dashboardPage.openDashboardPage();
+        boolean dashboardResult = dashboardPage.verifyDashboardPage();
+        Assert.assertTrue(dashboardResult, "Dashboard Page Failed: Expected success messages not found.");
 
         LOGGER.info("Valid Login Test Successful Completed");
 
@@ -54,6 +60,9 @@ public class TestPracticeTestAutomationPage extends BaseTest {
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.showInvalidUsernameMessage(PropertiesReader.readKey("INVALID_USERNAME"),PropertiesReader.readKey("VALID_PASSWORD"));
 
+        String errorText = getDriver().findElement(ERROR_USERNAME_MESSAGE).getText();
+        Assert.assertTrue(errorText.contains("Your username is invalid!"), "Invalid username error message was not shown.");
+
         LOGGER.info("Invalid Username Test Successful Completed");
 
     }
@@ -69,6 +78,9 @@ public class TestPracticeTestAutomationPage extends BaseTest {
 
         LoginPage loginPage=new LoginPage(getDriver());
         loginPage.showInvalidPasswordMessage(PropertiesReader.readKey("VALID_USERNAME"),PropertiesReader.readKey("INVALID_PASSWORD"));
+
+        String errorText = getDriver().findElement(ERROR_PASSWORD_MESSAGE).getText();
+        Assert.assertTrue(errorText.contains("Your password is invalid!"), "Invalid password error message was not shown.");
 
         LOGGER.info("Invalid Password Test Successful Completed");
 

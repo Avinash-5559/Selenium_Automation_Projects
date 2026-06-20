@@ -1,14 +1,17 @@
 package com.avinashsinha.pages.flipkart;
 
 import com.avinashsinha.base.BasePage;
-import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 //This is Page Class
 public class CheckoutCumLoginPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(CheckoutCumLoginPage.class);
 
     WebDriver driver;
 
@@ -21,22 +24,24 @@ public class CheckoutCumLoginPage extends BasePage {
     private static final By CONTINUE_BUTTON = By.xpath("//button[contains(text(),'Continue')]");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
-    public void checkOutCumLogin() {
+    public boolean checkOutCumLogin() {
 
-        String expectedButtonText = PropertiesReader.readKey("expectedFlipkartButtonText");
-        String actualButtonText = PropertiesReader.readKey("actualFlipkartButtonText");
+        boolean isPlaceOrderButtonPresent = WaitHelpers.isElementPresent(driver, PLACE_ORDER_BUTTON);
 
-        WebElement placeOrderButton = WaitHelpers.checkVisibility(PLACE_ORDER_BUTTON);
-        clickElement(placeOrderButton);
+        if (isPlaceOrderButtonPresent) {
 
-        WaitHelpers.checkVisibility(CONTINUE_BUTTON);
+            clickElement(PLACE_ORDER_BUTTON);
+            WaitHelpers.checkVisibility(CONTINUE_BUTTON);
+            LOGGER.info("Checkout flow proceeded successfully. Whole webpage flow passed.");
 
-        if (expectedButtonText.equals(actualButtonText)) {
-            System.out.println("\nWhole WebPages are Passed\n");
         } else {
-            System.out.println("\nFlipkart Checkout Page is Failed\n");
-            WaitHelpers.visibilityOfElement(CONTINUE_BUTTON);
+
+            LOGGER.info("Flipkart Checkout Page Failed: Continue button not found.");
+            WaitHelpers.visibilityOfElement(driver, CONTINUE_BUTTON);
+
         }
+
+        return isPlaceOrderButtonPresent;
 
     }
 

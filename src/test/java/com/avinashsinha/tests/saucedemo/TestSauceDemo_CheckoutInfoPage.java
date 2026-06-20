@@ -8,6 +8,7 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.avinashsinha.driver.DriverManager.getDriver;
@@ -31,6 +32,8 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing checkout form.");
+
         LOGGER.info("Valid Login Successful Completed");
 
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -41,13 +44,14 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
 
         LOGGER.info("User successfully able to Click Add To Cart Button on the Product Page");
 
-
         CartPage cartPage = new CartPage(getDriver());
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing checkout form.");
+
         cartPage
-                .clickCheckoutButtton();
+                .clickCheckoutButton();
 
         LOGGER.info("Product is now move to the Checkout Page");
 
@@ -76,6 +80,8 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing error message.");
+
         LOGGER.info("User Login Successful Completed");
 
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -86,13 +92,14 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
 
         LOGGER.info("User add the Product on the Cart");
 
-
         CartPage cartPage = new CartPage(getDriver());
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
+
         cartPage
-                .clickCheckoutButtton();
+                .clickCheckoutButton();
 
         LOGGER.info("Product is ready for the Checkout");
 
@@ -100,6 +107,8 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
         informationPage
                 .clickContinue()
                 .seeErrorMessage();
+
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
 
         LOGGER.info("User see the Error message without fill the form");
 
@@ -120,6 +129,8 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing confirmation page.");
+
         LOGGER.info("User logged in Successful");
 
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -135,8 +146,10 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
+
         cartPage
-                .clickCheckoutButtton();
+                .clickCheckoutButton();
 
         LOGGER.info("User move the product to the Checkout Page");
 
@@ -146,6 +159,12 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
                 .enterLastName(PropertiesReader.readKey("lastName"))
                 .enterPostalCode(PropertiesReader.readKey("postalCode"))
                 .clickContinue();
+
+        OverviewPage overviewPage = new OverviewPage(getDriver());
+        overviewPage
+                .checkOrderDetails();
+
+        Assert.assertTrue(overviewPage.isOrderConfirmedResult(), "Overview/Confirmation page was not shown after filling checkout form.");
 
         LOGGER.info("User see the Confirmation Details of Purchase");
 
@@ -166,6 +185,8 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing order cancellation.");
+
         LOGGER.info("Successful logged in with Valid Credentials Completed");
 
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -181,8 +202,10 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
+
         cartPage
-                .clickCheckoutButtton();
+                .clickCheckoutButton();
 
         LOGGER.info("User try to cancel the order");
 
@@ -217,6 +240,8 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
                 .clickAddToCart()
                 .clickCart();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing purchase flow.");
+
         LOGGER.info("User able to Click on Add To Cart Button on the Product Page");
 
 
@@ -224,8 +249,10 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
+
         cartPage
-                .clickCheckoutButtton();
+                .clickCheckoutButton();
 
         LOGGER.info("Product now move to the Checkout Page");
 
@@ -241,6 +268,8 @@ public class TestSauceDemo_CheckoutInfoPage extends BaseTest {
         OverviewPage overviewPage = new OverviewPage(getDriver());
         overviewPage
                 .checkOrderDetails();
+
+        Assert.assertTrue(overviewPage.isOrderConfirmedResult(), "Order was not confirmed; purchase failed.");
 
         LOGGER.info("User successfully purchased the order");
 

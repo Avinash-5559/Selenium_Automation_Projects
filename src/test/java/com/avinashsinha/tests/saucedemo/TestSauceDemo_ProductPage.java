@@ -11,6 +11,7 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -37,12 +38,16 @@ public class TestSauceDemo_ProductPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing Add To Cart.");
+
         LOGGER.info("Open the Product Page and Search for the Product");
 
         ProductsPage productsPage = new ProductsPage(getDriver());
         productsPage
                 .searchProduct()
                 .clickAddToCart();
+
+        Assert.assertTrue(productsPage.isProductSearchResult(), "Product was not found on Products Page.");
 
         LOGGER.info("User successfully able to Click Add To Cart Button on the Product Page");
 
@@ -62,6 +67,8 @@ public class TestSauceDemo_ProductPage extends BaseTest {
                 .enterUsername(PropertiesReader.readKey("sauceValidUsername"))
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
+
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing sort filter.");
 
         LOGGER.info("User click the filter Low to High");
 
@@ -88,6 +95,8 @@ public class TestSauceDemo_ProductPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing Product Details.");
+
         LOGGER.info("User click on the Product to see the Details");
 
         ProductsPage productsPage = new ProductsPage(getDriver());
@@ -112,6 +121,8 @@ public class TestSauceDemo_ProductPage extends BaseTest {
                 .enterUsername(PropertiesReader.readKey("sauceValidUsername"))
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
+
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing navigation.");
 
         LOGGER.info("User navigate to the Product to see the Details");
 
@@ -138,6 +149,8 @@ public class TestSauceDemo_ProductPage extends BaseTest {
                 .enterUsername(PropertiesReader.readKey("sauceValidUsername"))
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
+
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed before testing Remove button.");
 
         LOGGER.info("Open the Product Page and Search the Product");
 

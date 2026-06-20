@@ -10,6 +10,7 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -36,6 +37,8 @@ public class TestSauceDemo_LoginPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertTrue(loginPage.isLoginSuccessful(), "Expected successful login but it failed.");
+
         LOGGER.info("Valid Login Test Successful Completed");
 
     }
@@ -54,6 +57,8 @@ public class TestSauceDemo_LoginPage extends BaseTest {
                 .enterUsername(PropertiesReader.readKey("sauceValidUsername"))
                 .enterPassword("")
                 .clickLoginButton();
+
+        Assert.assertFalse(loginPage.isLoginSuccessful(), "Expected login to fail with missing password, but it succeeded.");
 
         LOGGER.info("Invalid Login with Username only Test Completed");
 
@@ -74,6 +79,8 @@ public class TestSauceDemo_LoginPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceValidPassword"))
                 .clickLoginButton();
 
+        Assert.assertFalse(loginPage.isLoginSuccessful(), "Expected login to fail with missing username, but it succeeded.");
+
         LOGGER.info("Invalid Login with Password only Test Completed");
 
     }
@@ -93,6 +100,8 @@ public class TestSauceDemo_LoginPage extends BaseTest {
                 .enterPassword(PropertiesReader.readKey("sauceInvalidPassword"))
                 .clickLoginButton();
 
+        Assert.assertFalse(loginPage.isLoginSuccessful(), "Expected login to fail with invalid credentials, but it succeeded.");
+
         LOGGER.info("Invalid Login Test Successful Completed");
 
     }
@@ -111,6 +120,8 @@ public class TestSauceDemo_LoginPage extends BaseTest {
                 .enterUsername("")
                 .enterPassword("")
                 .clickLoginButton();
+
+        Assert.assertFalse(loginPage.isLoginSuccessful(), "Expected login to fail with blank credentials, but it succeeded.");
 
         LOGGER.info("Test with Blank Credentials Completed");
 

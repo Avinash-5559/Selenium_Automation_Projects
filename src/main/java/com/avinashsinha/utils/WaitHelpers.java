@@ -1,9 +1,6 @@
 package com.avinashsinha.utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -65,9 +62,14 @@ public class WaitHelpers {
         ));
     }
 
-    public static void waitForElementToBeClickable(WebDriver driver, By locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(locator));
+    public static boolean waitForElementToBeClickable(WebDriver driver, By locator) {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.elementToBeClickable(locator));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     public static WebElement presenceOfElement(By elementLocation) {
@@ -86,6 +88,10 @@ public class WaitHelpers {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(elementLocation));
     }
 
+    public static WebElement visibilityOfElement(WebDriver driver, By elementLocation) {
+        return new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(elementLocation));
+    }
+
     public static WebElement checkVisibility(By addToCartButton) {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(addToCartButton));
     }
@@ -98,5 +104,26 @@ public class WaitHelpers {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.urlContains(locator));
     }
+
+    public static boolean isElementPresent(By elementLocation) {
+        try {
+            new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                    .until(ExpectedConditions.presenceOfElementLocated(elementLocation));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public static boolean isElementPresent(WebDriver driver, By elementLocation) {
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(ExpectedConditions.presenceOfElementLocated(elementLocation));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
 
 }

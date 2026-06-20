@@ -8,6 +8,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -27,12 +28,14 @@ public class TestFlipkartPage extends BaseTest {
         LOGGER.info("Starting the TestCase of Flipkart Page");
 
         HomePage homePage = new HomePage(getDriver());
-        homePage.flipkartHomePage();
+        boolean homeResult = homePage.flipkartHomePage();
+        Assert.assertTrue(homeResult, "Flipkart Home Page Failed: Search bar not clickable.");
 
         LOGGER.info("Search the Product on Flipkart Search Page");
 
         SearchPage searchPage = new SearchPage(getDriver());
-        searchPage.searchProduct();
+        boolean searchResult = searchPage.searchProduct();
+        Assert.assertTrue(searchResult, "Search Page Failed: Product not found in search results.");
 
         LOGGER.info("Open the Product on New Flipkart Product Page");
 
@@ -42,12 +45,14 @@ public class TestFlipkartPage extends BaseTest {
         LOGGER.info("Add the Product on Flipkart Cart Page");
 
         CartPage cartPage = new CartPage(getDriver());
-        cartPage.buyProduct();
+        boolean cartResult = cartPage.buyProduct();
+        Assert.assertTrue(cartResult, "Flipkart Cart Page Failed: Header cart button not found.");
 
         LOGGER.info("Proceed to the Flipkart CheckOut Page");
 
         CheckoutCumLoginPage checkoutCumLoginPage = new CheckoutCumLoginPage(getDriver());
-        checkoutCumLoginPage.checkOutCumLogin();
+        boolean checkoutResult = checkoutCumLoginPage.checkOutCumLogin();
+        Assert.assertTrue(checkoutResult, "Flipkart Checkout Page Failed: Place Order button not found.");
 
         LOGGER.info("Finishing the TestCase of Flipkart Page");
 

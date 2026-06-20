@@ -2,6 +2,8 @@ package com.avinashsinha.pages.practiceTestAutomation;
 
 import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +11,8 @@ import org.openqa.selenium.interactions.Actions;
 
 //This is Page Class
 public class LoginPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(LoginPage.class);
 
     WebDriver driver;
 
@@ -26,6 +30,8 @@ public class LoginPage extends BasePage {
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void openPracticeTestAutomation(String usr, String pwd) {
 
+        LOGGER.info("Opening Practice Test Automation login page.");
+
         openPracticeTestAutomationUrl();
 
         Actions actions = new Actions(driver);
@@ -41,9 +47,13 @@ public class LoginPage extends BasePage {
         WaitHelpers.presenceOfElement(driver, SUBMIT);
         clickElement(SUBMIT);
 
+        LOGGER.info("Login submitted with username: {}", usr);
+
     }
 
     public void showInvalidUsernameMessage(String usr, String pwd) {
+
+        LOGGER.info("Attempting login with invalid username: {}", usr);
 
         openPracticeTestAutomationUrl();
 
@@ -63,11 +73,13 @@ public class LoginPage extends BasePage {
         WaitHelpers.presenceOfElement(driver, ERROR_USERNAME_MESSAGE);
 
         String errorUsernameMessageText = driver.findElement(ERROR_USERNAME_MESSAGE).getText();
-        System.out.println("\nError Message Shown when USER enter Invalid Username : " + errorUsernameMessageText + "\n");
+        LOGGER.info("Error Message Shown when USER enter Invalid Username : {}", errorUsernameMessageText);
 
     }
 
     public void showInvalidPasswordMessage(String usr, String pwd) {
+
+        LOGGER.info("Attempting login with invalid password.");
 
         openPracticeTestAutomationUrl();
 
@@ -87,11 +99,13 @@ public class LoginPage extends BasePage {
         WaitHelpers.presenceOfElement(driver, ERROR_PASSWORD_MESSAGE);
 
         String errorPasswordMessageText = driver.findElement(ERROR_PASSWORD_MESSAGE).getText();
-        System.out.println("\nError Message Shown when USER enter Invalid Password : " + errorPasswordMessageText + "\n");
+        LOGGER.info("Error Message Shown when USER enter Invalid Password : {}", errorPasswordMessageText);
 
     }
 
     public void goToTheLogoutButtonPage(String usr, String pwd) {
+
+        LOGGER.info("Navigating to logout button page.");
 
         openPracticeTestAutomationUrl();
 
@@ -107,6 +121,8 @@ public class LoginPage extends BasePage {
 
         WaitHelpers.presenceOfElement(driver, SUBMIT);
         clickElement(SUBMIT);
+
+        LOGGER.info("Login submitted, ready for logout button page with username: {}", usr);
 
     }
 

@@ -12,6 +12,7 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -52,6 +53,8 @@ public class TestSauceDemo_CartPage extends BaseTest {
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
+
         LOGGER.info("Product is present on the Cart Page");
 
     }
@@ -85,8 +88,10 @@ public class TestSauceDemo_CartPage extends BaseTest {
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page before checkout.");
+
         cartPage
-                .clickCheckoutButtton();
+                .clickCheckoutButton();
 
         LOGGER.info("Product is now move to the Checkout Page");
 
@@ -120,6 +125,8 @@ public class TestSauceDemo_CartPage extends BaseTest {
         CartPage cartPage = new CartPage(getDriver());
         cartPage
                 .isProductPresent();
+
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
 
         cartPage
                 .clickContinueShoppingButton();
@@ -157,6 +164,8 @@ public class TestSauceDemo_CartPage extends BaseTest {
         cartPage
                 .isProductPresent();
 
+        Assert.assertTrue(cartPage.isProductPresentResult(), "Product was not present in the Cart Page.");
+
         cartPage
                 .clickRemoveFromCartButton();
 
@@ -191,6 +200,8 @@ public class TestSauceDemo_CartPage extends BaseTest {
         CartPage cartPage = new CartPage(getDriver());
         cartPage
                 .isCartEmpty();
+
+        Assert.assertTrue(cartPage.isCartEmptyResult(), "Cart Page was expected to be empty, but it was not.");
 
         LOGGER.info("Cart Page is fully Empty");
 

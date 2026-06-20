@@ -1,8 +1,9 @@
 package com.avinashsinha.pages.amazon;
 
 import com.avinashsinha.base.BasePage;
-import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.WebElement;
 //This is Page Class
 public class SearchPage extends BasePage {
 
+    private static final Logger LOGGER = LogManager.getLogger(SearchPage.class);
+
     WebDriver driver;
 
     public SearchPage(WebDriver driver) {
@@ -18,19 +21,20 @@ public class SearchPage extends BasePage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private static final By FIND_PRODUCT = By.xpath(PropertiesReader.readKey("actualAmazonXpath"));
+    private static final By FIND_PRODUCT = By.xpath("(//div[@data-cy='title-recipe'])[21]");
+    private static final By GIFT_WRAP = By.xpath("//input[@id='gift-wrap']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
-    public void searchProduct() {
+    public boolean searchProduct() {
 
-        String expectedPath = PropertiesReader.readKey("expectedAmazonXpath");
-        String actualPath = PropertiesReader.readKey("actualAmazonXpath");
+        boolean isProductPresent = WaitHelpers.isElementPresent(FIND_PRODUCT);
 
-        if (expectedPath.equals(actualPath)) {
+        if (isProductPresent) {
+
+            WebElement element = WaitHelpers.presenceOfElement(driver, FIND_PRODUCT);
 
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
-            WebElement element = driver.findElement(FIND_PRODUCT);
             js.executeScript(
                     "arguments[0].scrollIntoView({behavior:'smooth',block:'center'});",
                     element);
@@ -42,7 +46,7 @@ public class SearchPage extends BasePage {
             WaitHelpers.waitJVM(3000);
 
             String pageUrl = js.executeScript("return document.URL").toString();
-            System.out.println("\nProduct Name : " + pageUrl + "\n");
+            LOGGER.info("Navigated to product page: {}", pageUrl);
 
             String parentWindow = driver.getWindowHandle();
 
@@ -55,11 +59,12 @@ public class SearchPage extends BasePage {
 
         } else {
 
-            System.out.println("\nProduct is not Listed on the Amazon Page.\n");
-            WaitHelpers.visibilityOfElement(driver.findElement(By.xpath("//input[@id='gift-wrap']")));
+            LOGGER.error("Search Page Failed: Product not found in search results.");
+            WaitHelpers.visibilityOfElement(driver, GIFT_WRAP);
 
         }
 
+        return isProductPresent;
     }
 
 }

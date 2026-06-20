@@ -1,14 +1,16 @@
 package com.avinashsinha.pages.saucedemo;
 
 import com.avinashsinha.base.BasePage;
-import com.avinashsinha.driver.DriverManager;
-import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 //This is Page Class
 public class LoginPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(LoginPage.class);
 
     WebDriver driver;
 
@@ -22,22 +24,20 @@ public class LoginPage extends BasePage {
     private static final By LOGIN_BUTTON = By.id("login-button");
     private static final By PRODUCTS_TEXT = By.xpath("//span[text()='Products']");
     private static final By ERROR_MESSAGE = By.cssSelector(".error-message-container");
+    private static final By SAUCE_DEMO_FALLBACK = By.id("sauce-demo-id");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public LoginPage openSauceDemo() {
 
-        String expectedUrl = PropertiesReader.readKey("expectedSauceDemoUrl");
-        String actualUrl = PropertiesReader.readKey("actualSauceDemoUrl");
+        openSauceDemoUrl();
 
-        if (expectedUrl.equals(actualUrl)) {
+        boolean isUsernameFieldPresent = WaitHelpers.isElementPresent(driver, USERNAME_TEXT_FIELD);
 
-            openSauceDemoUrl();
-
+        if (isUsernameFieldPresent) {
+            LOGGER.info("SauceDemo login page loaded successfully.");
         } else {
-
-            System.out.println("\nRedirect to the Wrong URL\n");
-            WaitHelpers.visibilityOfElement(driver.findElement(By.id("sauce-demo-id")));
-
+            LOGGER.error("Redirected to the wrong URL: Login page not loaded.");
+            WaitHelpers.presenceOfElement(driver, SAUCE_DEMO_FALLBACK);
         }
 
         return this;
@@ -45,19 +45,15 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage enterUsername(String usr) {
-
+        LOGGER.info("Entering username: {}", usr);
         enterInput(USERNAME_TEXT_FIELD, usr);
-
         return this;
-
     }
 
     public LoginPage enterPassword(String pwd) {
-
+        LOGGER.info("Entering password.");
         enterInput(PASSWORD_TEXT_FIELD, pwd);
-
         return this;
-
     }
 
     public LoginPage clickLoginButton() {
@@ -66,26 +62,20 @@ public class LoginPage extends BasePage {
 
         WaitHelpers.waitForEitherElement(PRODUCTS_TEXT, ERROR_MESSAGE);
 
-        if (isElementPresent(PRODUCTS_TEXT)) {
-            System.out.println("Login PASSED");
-        } else if (isElementPresent(ERROR_MESSAGE)) {
-            System.out.println("Login FAILED");
+        if (WaitHelpers.isElementPresent(driver, PRODUCTS_TEXT)) {
+            LOGGER.info("Login PASSED. Products page loaded.");
+        } else if (WaitHelpers.isElementPresent(driver, ERROR_MESSAGE)) {
+            LOGGER.error("Login FAILED. Error message displayed.");
         } else {
-            System.out.println("UNKNOWN STATE");
+            LOGGER.warn("Login result UNKNOWN STATE: neither Products page nor error message found.");
         }
 
         return this;
 
     }
 
-    private boolean isElementPresent(By locator) {
-
-        try {
-            return DriverManager.getDriver().findElement(locator).isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
-
+    public boolean isLoginSuccessful() {
+        return WaitHelpers.isElementPresent(driver, PRODUCTS_TEXT);
     }
 
 }

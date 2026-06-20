@@ -9,6 +9,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -26,9 +27,7 @@ public class TestSauceDemoPage_DDT_Excel extends BaseTest {
     @Owner("Avinash Sinha")
     public void testSauceDemoPage_DDT_Excel(String username, String password) {
 
-        LOGGER.info("Start the Test Case of LoginPage of Sauce Demo from Excel Data");
-
-        System.out.println(" | " + username + " | " + password + " | ");
+        LOGGER.info("Testing login with username: {} | password: {}", username, password);
 
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage
@@ -37,8 +36,10 @@ public class TestSauceDemoPage_DDT_Excel extends BaseTest {
                 .enterPassword(password)
                 .clickLoginButton();
 
-        LOGGER.info("End the Test Case of Sauce LoginPage of Demo from Excel Data");
+        Assert.assertTrue(loginPage.isLoginSuccessful(),
+                "Login failed for username: " + username);
 
+        LOGGER.info("Login successful for username: {}", username);
     }
 
     @DataProvider

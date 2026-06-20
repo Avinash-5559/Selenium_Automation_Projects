@@ -2,6 +2,8 @@ package com.avinashsinha.pages.flipkart;
 
 import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 
@@ -12,6 +14,8 @@ import java.time.format.DateTimeFormatter;
 
 //This is Page Class
 public class ProductPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(ProductPage.class);
 
     WebDriver driver;
 
@@ -24,6 +28,8 @@ public class ProductPage extends BasePage {
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public void clickAddToCartButton() {
+
+        LOGGER.info("Waiting for Add To Cart button to confirm Product Page has loaded.");
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -50,7 +56,11 @@ public class ProductPage extends BasePage {
             throw new RuntimeException("Failed to save screenshot", e);
         }
 
+        LOGGER.info("Adding product into the cart.");
+
         clickElement(addToCartButtonElement);
+
+        LOGGER.info("Product added to cart from Product Page.");
 
         WaitHelpers.waitJVM(3000);
 

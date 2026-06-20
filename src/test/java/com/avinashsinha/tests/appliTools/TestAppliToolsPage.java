@@ -10,6 +10,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -29,12 +30,16 @@ public class TestAppliToolsPage extends BaseTest {
         LOGGER.info("Starting the TestCase of AppliTools Page");
 
         LoginPage loginPage = new LoginPage(getDriver());
-        loginPage.loginToAppliToolsCreds(PropertiesReader.readKey("appUsername"), PropertiesReader.readKey("appPassword"));
+        boolean loginResult = loginPage.loginToAppliToolsCreds(
+                PropertiesReader.readKey("appUsername"),
+                PropertiesReader.readKey("appPassword"));
+        Assert.assertTrue(loginResult, "Login Page Failed: Financial Overview not found after login attempt.");
 
-        System.out.println("\n---------- Submission of all Amounts ----------\n");
+        LOGGER.info("Submission of all Amounts");
 
         DashboardPage dashboardPage = new DashboardPage(getDriver());
-        dashboardPage.enterToDashboardPage();
+        double totalAmount = dashboardPage.calculateTotalDashboardAmount();
+        Assert.assertTrue(totalAmount > 0, "Dashboard Page Failed: Total amount calculated was zero or negative.");
 
         LOGGER.info("Finishing the TestCase of AppliTools Page");
 

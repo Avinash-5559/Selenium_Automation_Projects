@@ -1,8 +1,9 @@
 package com.avinashsinha.pages.saucedemo;
 
 import com.avinashsinha.base.BasePage;
-import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,6 +18,8 @@ import java.time.format.DateTimeFormatter;
 //This is Page Class
 public class OverviewPage extends BasePage {
 
+    private static final Logger LOGGER = LogManager.getLogger(OverviewPage.class);
+
     WebDriver driver;
 
     public OverviewPage(WebDriver driver) {
@@ -25,14 +28,20 @@ public class OverviewPage extends BasePage {
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
     private final static By FINISH_BUTTON = By.id("finish");
+    private static final By OVERVIEW_HEADER = By.cssSelector(".title");
+    private static final By SAUCE_DEMO_FALLBACK = By.id("sauce-demo-id");
+
+    private boolean lastOrderConfirmedResult;
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
     public OverviewPage checkOrderDetails() {
 
-        String expectedOverviewPageTitle = PropertiesReader.readKey("expectedOverviewPageTitle");
-        String actualOverviewPageTitle = PropertiesReader.readKey("actualOverviewPageTitle");
+        boolean isOverviewPagePresent = WaitHelpers.isElementPresent(driver, OVERVIEW_HEADER);
+        this.lastOrderConfirmedResult = isOverviewPagePresent;
 
-        if (expectedOverviewPageTitle.equals(actualOverviewPageTitle)) {
+        if (isOverviewPagePresent) {
+
+            LOGGER.info("Overview Page loaded. Capturing screenshot.");
 
             File sourceFolder = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
@@ -55,13 +64,17 @@ public class OverviewPage extends BasePage {
 
         } else {
 
-            System.out.println("\nOrder is not Confirmed\n");
-            WaitHelpers.presenceOfElement(driver, By.id("sauce-demo-id"));
+            LOGGER.error("Order is not Confirmed: Overview Page not loaded.");
+            WaitHelpers.presenceOfElement(driver, SAUCE_DEMO_FALLBACK);
 
         }
 
         return this;
 
+    }
+
+    public boolean isOrderConfirmedResult() {
+        return lastOrderConfirmedResult;
     }
 
 }

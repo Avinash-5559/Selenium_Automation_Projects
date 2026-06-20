@@ -1,14 +1,17 @@
 package com.avinashsinha.pages.flipkart;
 
 import com.avinashsinha.base.BasePage;
-import com.avinashsinha.utils.PropertiesReader;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 //This is Page Class
 public class SearchPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(SearchPage.class);
 
     WebDriver driver;
 
@@ -17,15 +20,15 @@ public class SearchPage extends BasePage {
     }
 
     //Step 1 : These are Page Locators i.e. Kind of Attributes or Instance Variable or Member Variable
-    private static final By FIND_PRODUCT = By.xpath(PropertiesReader.readKey("actualFlipkartXpath"));
+    private static final By FIND_PRODUCT = By.xpath("(//div[@data-id]//a[contains(@href,'/p/')])[120]");
+    private static final By BUY_NOW = By.xpath("//button[normalize-space()='Buy Now']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
-    public void searchProduct() {
+    public boolean searchProduct() {
 
-        String expectedPath = PropertiesReader.readKey("expectedFlipkartXpath");
-        String actualPath = PropertiesReader.readKey("actualFlipkartXpath");
+        boolean isProductPresent = WaitHelpers.isElementPresent(FIND_PRODUCT);
 
-        if (expectedPath.equals(actualPath)) {
+        if (isProductPresent) {
 
             JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -45,12 +48,16 @@ public class SearchPage extends BasePage {
                 }
             }
 
+            LOGGER.info("Product clicked, switched to new window.");
+
         } else {
 
-            System.out.println("\nProduct is not Listed on the Flipkart Page.\n");
-            WaitHelpers.visibilityOfElement(driver.findElement(By.xpath("//button[normalize-space()='Buy Now']")));
+            LOGGER.error("Search Page Failed: Product not found in search results.");
+            WaitHelpers.visibilityOfElement(driver, BUY_NOW);
 
         }
+
+        return isProductPresent;
 
     }
 

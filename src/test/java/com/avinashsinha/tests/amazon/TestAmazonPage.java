@@ -8,6 +8,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -27,12 +28,14 @@ public class TestAmazonPage extends BaseTest {
         LOGGER.info("Starting the TestCase of Amazon Page");
 
         HomePage homePage = new HomePage(getDriver());
-        homePage.amazonHomePage();
+        boolean homeResult = homePage.amazonHomePage();
+        Assert.assertTrue(homeResult, "Amazon Home Page Failed: Search bar not clickable.");
 
         LOGGER.info("Search the Product on Amazon Search Page");
 
         SearchPage searchPage = new SearchPage(getDriver());
-        searchPage.searchProduct();
+        boolean searchResult = searchPage.searchProduct();
+        Assert.assertTrue(searchResult, "Search Page Failed: Product not found in search results.");
 
         LOGGER.info("Open the Product on New Amazon Product Page");
 
@@ -42,12 +45,14 @@ public class TestAmazonPage extends BaseTest {
         LOGGER.info("Add the Product on Amazon Cart Page");
 
         CartPage cartPage = new CartPage(getDriver());
-        cartPage.buyProduct();
+        boolean cartResult = cartPage.buyProduct();
+        Assert.assertTrue(cartResult, "Amazon Cart Page Failed: Product was not added to cart.");
 
         LOGGER.info("Proceed to the Amazon CheckOut Page");
 
         CheckoutCumLoginPage checkoutCumLoginPage = new CheckoutCumLoginPage(getDriver());
-        checkoutCumLoginPage.checkOutCumLogin();
+        boolean checkoutResult = checkoutCumLoginPage.checkOutCumLogin();
+        Assert.assertTrue(checkoutResult, "Amazon Checkout Page Failed: Continue button not found.");
 
         LOGGER.info("Finished the TestCase of Amazon Page");
 

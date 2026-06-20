@@ -2,11 +2,16 @@ package com.avinashsinha.pages.practiceTestAutomation;
 
 import com.avinashsinha.base.BasePage;
 import com.avinashsinha.utils.WaitHelpers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 //This is Page Class
 public class DashboardPage extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger(DashboardPage.class);
 
     WebDriver driver;
 
@@ -20,32 +25,38 @@ public class DashboardPage extends BasePage {
     private static final By LOGOUT = By.xpath("//a[text()='Log out']");
 
     //Step 2 : These are Page Actions i.e. Kind of Behaviors or Instance Methods or Member Methods
-    public void openDashboardPage() {
+    public boolean verifyDashboardPage() {
 
-        System.out.println("\nDashboard Page URL     : " + driver.getCurrentUrl());
+        LOGGER.info("Dashboard Page URL: {}", driver.getCurrentUrl());
 
-        WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, driver.findElement(LOGGED_MESSAGE));
+        boolean isLoggedMessagePresent = WaitHelpers.isElementPresent(driver, LOGGED_MESSAGE);
+        boolean isCongratsMessagePresent = WaitHelpers.isElementPresent(driver, CONGRATULATION_MESSAGE);
 
-        String loggedMessageText = driver.findElement(LOGGED_MESSAGE).getText();
-        System.out.println("\nLogged Message         : " + loggedMessageText);
+        if (isLoggedMessagePresent) {
+            WebElement loggedMessageElement = driver.findElement(LOGGED_MESSAGE);
+            WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, loggedMessageElement);
+            LOGGER.info("Logged Message: {}", loggedMessageElement.getText());
+        }
 
-        WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, driver.findElement(CONGRATULATION_MESSAGE));
+        if (isCongratsMessagePresent) {
+            WebElement congratsMessageElement = driver.findElement(CONGRATULATION_MESSAGE);
+            WaitHelpers.checkVisibilityOfAndTextToBePresentInElement(driver, congratsMessageElement);
+            LOGGER.info("Congratulation Message: {}", congratsMessageElement.getText());
+        }
 
-        String congratulationMessageText = driver.findElement(CONGRATULATION_MESSAGE).getText();
-        System.out.println("\nCongratulation Message : " + congratulationMessageText + "\n");
+        boolean isDashboardVerified = isLoggedMessagePresent && isCongratsMessagePresent;
 
-        WaitHelpers.presenceOfElement(LOGOUT);
+        if (!isDashboardVerified) {
+            LOGGER.error("Dashboard Page Failed: Expected success messages not found.");
+        }
 
-        clickElement(LOGOUT);
-
+        return isDashboardVerified;
     }
 
-    public void clickLogoutButton(){
-
-        WaitHelpers.presenceOfElement(LOGOUT);
-
+    public void clickLogoutButton() {
+        WaitHelpers.presenceOfElement(driver, LOGOUT);
         clickElement(LOGOUT);
-
+        LOGGER.info("Logged out successfully.");
     }
 
 }
